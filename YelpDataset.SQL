@@ -1,3 +1,4 @@
+/*
 By: Daniel Choi
 Date: Feb-18th-2022
 
@@ -15,7 +16,7 @@ In this case, you may want to save as a PDF to ensure your formatting remains in
 
 Part 1: Yelp Dataset Profiling and Understanding
 
-1. Profile the data by finding the total number of records for each of the tables below:
+1. Profile the data by finding the total number of records for each of the tables below: */
 
                                     Select Count(*)
                                     From table
@@ -34,7 +35,7 @@ xi. user table = 10000
 	
 
 
-2. Find the total distinct records by either the foreign key or primary key for each table. If two foreign keys are listed in the table, please specify which foreign key.
+--2. Find the total distinct records by either the foreign key or primary key for each table. If two foreign keys are listed in the table, please specify which foreign key.
 
                                     Select Count(Distinct (key)
                                     From table
@@ -56,13 +57,13 @@ Note: Primary Keys are denoted in the ER-Diagram with a yellow key icon.
 
 
 
-3. Are there any columns with null values in the Users table? Indicate "yes," or "no."
+--3. Are there any columns with null values in the Users table? Indicate "yes," or "no."
 
 	Answer: 
   "no"
 	
 	
-	SQL code used to arrive at answer:
+--	SQL code used to arrive at answer:
   
       Select Count(*)
       From user
@@ -91,7 +92,7 @@ Note: Primary Keys are denoted in the ER-Diagram with a yellow key icon.
 	
 
 	
-4. For each table and column listed below, display the smallest (minimum), largest (maximum), and average (mean) value for the following fields:
+--4. For each table and column listed below, display the smallest (minimum), largest (maximum), and average (mean) value for the following fields:
 
             Select min(column), max(column) , avg (column)
             From table
@@ -122,7 +123,7 @@ Note: Primary Keys are denoted in the ER-Diagram with a yellow key icon.
 		
 
 
-5. List the cities with the most reviews in descending order:
+--5. List the cities with the most reviews in descending order:
 
 	SQL code used to arrive at answer:
 	
@@ -133,7 +134,8 @@ Note: Primary Keys are denoted in the ER-Diagram with a yellow key icon.
 
 	
 	Copy and Paste the Result Below:
-  +-----------------+---------+
+
++-----------------+---------+
 | city            | reviews |
 +-----------------+---------+
 | Las Vegas       |   82854 |
@@ -165,7 +167,7 @@ Note: Primary Keys are denoted in the ER-Diagram with a yellow key icon.
 	
 
 	
-6. Find the distribution of star ratings to the business in the following cities:
+--6. Find the distribution of star ratings to the business in the following cities:
 
 i. Avon
 
@@ -214,7 +216,7 @@ Copy and Paste the Resulting Table Below (2 columns â€“ star rating and cou
 |   5.0 |         23 |
 +-------+------------+
 
-7. Find the top 3 users based on their total number of reviews:
+--7. Find the top 3 users based on their total number of reviews:
 		
 	SQL code used to arrive at answer:
   
@@ -235,11 +237,11 @@ Copy and Paste the Resulting Table Below (2 columns â€“ star rating and cou
 +--------+------------------------+--------------+
 
 
-8. Does posing more reviews correlate with more fans?
+--8. Does posing more reviews correlate with more fans?
 
-Yes, posting more reviews was found to be correlated with having more fans.
+--Yes, posting more reviews was found to be correlated with having more fans.
 
-	Please explain your findings and interpretation of the results:
+--	Please explain your findings and interpretation of the results:
   
   Select id, name, review_count, fans
   From user
@@ -313,11 +315,11 @@ Yes, posting more reviews was found to be correlated with having more fans.
 	
 
 	
-9. Are there more reviews with the word "love" or with the word "hate" in them?
+--9. Are there more reviews with the word "love" or with the word "hate" in them?
 
-	Answer: 
+	--Answer: 
   
-          the word "love" appeared 1780 time and "hate" appeared 232 times
+         -- the word "love" appeared 1780 time and "hate" appeared 232 times
   
 
 	
@@ -331,7 +333,7 @@ Yes, posting more reviews was found to be correlated with having more fans.
           From review
           Where text Like '%love%' 
 	
-10. Find the top 10 users with the most fans:
+--10. Find the top 10 users with the most fans:
 
 	SQL code used to arrive at answer:
 	
@@ -358,17 +360,17 @@ Yes, posting more reviews was found to be correlated with having more fans.
 	
 		
 
-Part 2: Inferences and Analysis
+/*Part 2: Inferences and Analysis
 
 1. Pick one city and category of your choice and group the businesses in that city or category by their overall star rating. Compare the businesses with 2-3 stars to the businesses with 4-5 stars and answer the following questions. Include your code.
 	
 i. Do the two groups you chose to analyze have a different distribution of hours?
 
   While only 4 total businesses were returned, the businesses with 4-5 stars seem to have shorter hours than businesses with 2-3 stars. 
-  4 star restaurant "Edulis" only operated 5 days out of the week and seemed to operate for shorter hours than the two 2-3 star restaurants.
+  4 star restaurant "Edulis" only operated 5 days out of the week and seemed to operate for shorter hours than the two 2-3 star restaurants.*/
 
 
-ii. Do the two groups you chose to analyze have a different number of reviews?
+/*ii. Do the two groups you chose to analyze have a different number of reviews?
   
   Yes and no. The 4 star restaurant "Edulis" had 89 reviews but the 4.5 star restaurant "Sushi Osaka" only had 8, which could possibly explain the high stars. 
   "Pizzaiolo", which is a 3 star restaurant, has 34 reviews, while "99 cent sushi", a 2 star restaurant, only has 5. 
@@ -378,7 +380,7 @@ iii. Are you able to infer anything from the location data provided between thes
 
   No. Each of the 4 restaurants returned were from separate districts of Toronto. 
 
-SQL code used for analysis:
+SQL code used for analysis: */
 
 
         Select bh.name as name, bh.stars as stars, bh.review_count as review_count, bh.hours as hours, c.category as category, bh.neighborhood as neighborhood,
@@ -404,19 +406,19 @@ SQL code used for analysis:
 
 		
 		
-2. Group business based on the ones that are open and the ones that are closed. 
+/*2. Group business based on the ones that are open and the ones that are closed. 
   What differences can you find between the ones that are still open and the ones that are closed? 
-  List at least two differences and the SQL code you used to arrive at your answer.
+  List at least two differences and the SQL code you used to arrive at your answer.*/
 		
-i. Difference 1:
+--i. Difference 1:
 
-Stores that are open received more reviews on averaged than stores that are closed.
+--Stores that are open received more reviews on averaged than stores that are closed.
          
          Open:   AVG(review_count) = 31.757
 			   Closed: AVG(review_count0 = 23.198
          
-ii. Difference 2:
-Stores that are open have slightly high stars than stores that are closed
+--ii. Difference 2:
+--Stores that are open have slightly high stars than stores that are closed
          
          Open:   AVG(stars) = 3.679
 			   Closed: AVG(stars) = 3.520
@@ -429,7 +431,7 @@ SQL code used for analysis:
         Group by is_open
 
 	
-3. For this last part of your analysis, you are going to choose the type of analysis you want to conduct on the Yelp dataset and are going to prepare the data for analysis.
+/*3. For this last part of your analysis, you are going to choose the type of analysis you want to conduct on the Yelp dataset and are going to prepare the data for analysis.
 
 Ideas for analysis include: Parsing out keywords and business attributes for sentiment analysis, clustering businesses to find commonalities or anomalies between them, predicting the overall star rating for a business, predicting the number of fans a user will have, and so on. These are just a few examples to get you started, so feel free to be creative and come up with your own problem you want to solve. Provide answers, in-line, to all of the following:
 	
@@ -444,9 +446,9 @@ star rating of the business, and full list of categories. The table will compare
 to find whether the category's number of reviews have any relationship with the stars. This will help business owners in lower star categories
 to identify the problem and work towards receiving higher stars on Yelp.
 
-iii. Output of your finished dataset:
+iii. Output of your finished dataset:*/
 
-10 lowest reviewed categories on Yelp:
+--10 lowest reviewed categories on Yelp:
 +-----------------------+---------+-----------+
 | category              | reviews | avg_stars |
 +-----------------------+---------+-----------+
@@ -462,7 +464,7 @@ iii. Output of your finished dataset:
 | Shades & Blinds       |       3 |       4.5 |
 +-----------------------+---------+-----------+
 
-10 highest reviewed categories on Yelp:
+--10 highest reviewed categories on Yelp:
 +---------------------------+---------+-----------+
 | category                  | reviews | avg_stars |
 +---------------------------+---------+-----------+
@@ -478,10 +480,10 @@ iii. Output of your finished dataset:
 | Caterers                  |      76 |       4.5 |
 +---------------------------+---------+-----------+
 
-Categories with the highest review count are shown to have higher stars on average. 
-Categories with lower review count are advised to increase efforts to receive more reviews in order to receive higher stars.
+/*Categories with the highest review count are shown to have higher stars on average. 
+Categories with lower review count are advised to increase efforts to receive more reviews in order to receive higher stars.*/
 
-iv. Provide the SQL code you used to create your final dataset:
+--iv. Provide the SQL code you used to create your final dataset:
 
         Select c.category, Sum(review_count) as reviews, Round(avg(b.stars), 1) as avg_stars
         From business b Join category c on b.id = c.business_id
